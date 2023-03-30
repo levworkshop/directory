@@ -12,6 +12,8 @@ interface Customer {
     styleUrls: ['./customer-page.component.scss']
 })
 export class CustomerPageComponent {
+    showForm = false;
+
     customers: Array<Customer> = [
         {
             name: "Matilda",
@@ -28,4 +30,12 @@ export class CustomerPageComponent {
             email: "twist@gmail.com"
         }
     ];
+
+    customerTotal(): number {
+        return this.customers ? this.customers.length : 0;
+    }
+
+    toggleForm() {
+        this.showForm = !this.showForm;
+    }
 }
