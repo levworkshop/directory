@@ -14,6 +14,7 @@ interface Customer {
 })
 export class CustomerPageComponent {
     showForm = false;
+    showNotification = false;
 
     customers: Array<Customer> = [
         {
@@ -55,6 +56,11 @@ export class CustomerPageComponent {
         this.showForm = !this.showForm;
     }
 
+    notificationClosed(state: boolean) {
+        this.showNotification = state;
+        this.showForm = false;
+    }
+
     onSubmit() {
         if (!this.customerForm.valid) {
             return;
@@ -62,5 +68,6 @@ export class CustomerPageComponent {
 
         this.customers.push(this.customerForm.value);
         this.customerForm.reset();
+        this.showNotification = true;
     }
 }

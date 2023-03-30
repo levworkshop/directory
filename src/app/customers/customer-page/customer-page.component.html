@@ -5,6 +5,8 @@
     </small>
 </h2>
 
+<app-notification (buttonClicked)="notificationClosed($event)" [showNotification]="showNotification"></app-notification>
+
 <div class="section-bg p-3">
     <div class="d-flex justify-content-end">
         <div>
