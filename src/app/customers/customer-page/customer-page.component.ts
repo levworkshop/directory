@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 interface Customer {
-    name: string;
-    phone: string;
-    email: string;
+    name?: string | null;
+    phone?: string | null;
+    email?: string | null;
 }
 
 @Component({
@@ -31,11 +32,35 @@ export class CustomerPageComponent {
         }
     ];
 
+    customerForm = new FormGroup({
+        name: new FormControl('', {
+            validators: Validators.required
+        }),
+        email: new FormControl('', {
+            validators: [
+                Validators.required,
+                Validators.email
+            ]
+        }),
+        phone: new FormControl('', {
+            validators: Validators.required
+        })
+    })
+
     customerTotal(): number {
         return this.customers ? this.customers.length : 0;
     }
 
     toggleForm() {
         this.showForm = !this.showForm;
+    }
+
+    onSubmit() {
+        if (!this.customerForm.valid) {
+            return;
+        }
+
+        this.customers.push(this.customerForm.value);
+        this.customerForm.reset();
     }
 }
