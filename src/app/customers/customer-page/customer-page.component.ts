@@ -16,6 +16,8 @@ export class CustomerPageComponent {
     showForm = false;
     showNotification = false;
 
+    searchField = '';
+
     customers: Array<Customer> = [
         {
             name: "Matilda",
@@ -32,6 +34,12 @@ export class CustomerPageComponent {
             email: "twist@gmail.com"
         }
     ];
+
+    searchInCustomers() {
+        // this.customers.filter(customer => 
+        //     customer.name?.includes(this.searchField)
+        //     )
+    }
 
     customerForm = new FormGroup({
         name: new FormControl('', {

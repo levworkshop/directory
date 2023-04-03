@@ -37,6 +37,11 @@
         </form>
     </div>
 
+    <div>
+        <input [(ngModel)]="searchField" type="text">
+        <button (click)="searchInCustomers()">Search</button>
+    </div>
+
     <table class="table mt-4">
         <thead>
             <tr>
